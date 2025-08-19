@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<div class="container p-5 mt-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card card-sh">
+						<div class="card-header text-center ">
+							<p class="fs-4">Update Display Carousel</p>
+
+							<th:block th:if="${session.succMsg}">
+								<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+								<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+
+							<th:block th:if="${session.errorMsg}">
+								<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+								<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+
+						</div>
+						<div class="card-body">
+							<form action="/admin/saveCarousel" method="post"
+								enctype="multipart/form-data">
+								
+
+							
+								<div class="col">
+
+									<div class="mb-3 col">
+										<label>Enter 1st Image</label> <input type="file" name="fimg"
+											class="form-control">
+									</div>
+
+									<div class="mb-3 col">
+										<label>Enter 2nd Image</label> <input type="file" name="simg"
+											class="form-control">
+									</div>
+									<div class="mb-3 col">
+										<label>Enter 3rd Image</label> <input type="file" name="timg"
+											class="form-control">
+									</div>
+								</div>
+								<button class="btn btn-primary col-md-12">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
